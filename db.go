@@ -13,7 +13,7 @@ var dbMutex sync.Mutex
 var configFile = "config.txt" // File where the last used dbFile name is stored
 
 // initDB initializes the database file
-func initDB() {
+func InitDB() {
 	// Check if config file exists, if so, use the last database file name from it
 	if _, err := os.Stat(configFile); err == nil {
 		// Read the config file to get the last used dbFile name
@@ -47,13 +47,13 @@ func initDB() {
 		dbFile = userInput
 
 		// Save the dbFile name to the config file
-		saveConfigFile(dbFile)
+		SaveConfigFile(dbFile)
 	}
 
 	// Check if the database file exists, if not, create it
 	if _, err := os.Stat(dbFile); os.IsNotExist(err) {
 		fmt.Println("Database file doesn't exist, creating a new one.")
-		createDatabaseFile()
+		CreateDatabaseFile()
 	} else {
 		// If the file exists, print that it's using the existing file
 		fmt.Println("Database file exists, using existing file:", dbFile)
@@ -61,7 +61,7 @@ func initDB() {
 }
 
 // createDatabaseFile creates a new database file
-func createDatabaseFile() {
+func CreateDatabaseFile() {
 	// Open the database file for writing
 	file, err := os.Create(dbFile)
 	if err != nil {
@@ -129,7 +129,7 @@ func SelectRows() {
 }
 
 // saveConfigFile saves the database file name to a config file
-func saveConfigFile(dbName string) {
+func SaveConfigFile(dbName string) {
 	// Open or create the config file to save the database name
 	file, err := os.Create(configFile)
 	if err != nil {
