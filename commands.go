@@ -7,7 +7,7 @@ import (
 )
 
 // handleSQLCommand processes SQL-like commands
-func handleSQLCommand(cmd string) {
+func HandleSQLCommand(cmd string) {
 	// Trim any leading/trailing spaces from the input
 	cmd = strings.TrimSpace(cmd)
 
