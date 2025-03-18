@@ -8,6 +8,7 @@ import (
 	"sync"
 )
 
+
 var dbFile string // Holds the name of the database file
 var dbMutex sync.Mutex
 var configFile = "config.txt" // File where the last used dbFile name is stored
